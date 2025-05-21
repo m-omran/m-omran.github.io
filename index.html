@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مغير الخطوط التفاعلي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Changa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Pacifico&family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Satisfy&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>مُغيّر الخطوط التفاعلي</h1>
+        </header>
+
+        <main class="content-wrapper">
+            <div class="controls-panel">
+                <div class="control-section">
+                    <div class="control-item">
+                        <label for="fontSelect">اختر الخط:</label>
+                        <select id="fontSelect">
+                            <optgroup label="خطوط النظام الشائعة">
+                                <option value="Arial, sans-serif">Arial</option>
+                                <option value="Verdana, sans-serif">Verdana</option>
+                                <option value="Times New Roman, serif">Times New Roman</option>
+                                <option value="Courier New, monospace">Courier New</option>
+                                <option value="Georgia, serif">Georgia</option>
+                            </optgroup>
+                            <optgroup label="خطوط Google Fonts (عربية)">
+                                <option value="Cairo, sans-serif">Cairo</option>
+                                <option value="Changa, sans-serif">Changa</option>
+                                <option value="'IBM Plex Sans Arabic', sans-serif">IBM Plex Sans Arabic</option>
+                                <option value="Tajawal, sans-serif">Tajawal</option>
+                            </optgroup>
+                            <optgroup label="خطوط Google Fonts (متعددة اللغات)">
+                                <option value="Roboto, sans-serif" selected>Roboto (افتراضي)</option>
+                                <option value="Open Sans, sans-serif">Open Sans</option>
+                                <option value="Lato, sans-serif">Lato</option>
+                                <option value="Montserrat, sans-serif">Montserrat</option>
+                                <option value="Poppins, sans-serif">Poppins</option>
+                                <option value="Pacifico, cursive">Pacifico (خط يد)</option>
+                                <option value="Satisfy, cursive">Satisfy (خط يد)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="control-item slider-control">
+                        <label for="fontSize">حجم الخط:</label>
+                        <input type="range" id="fontSize" min="12" max="72" value="24">
+                        <span id="fontSizeValue">24px</span>
+                    </div>
+                </div> <div class="control-section">
+                    <div class="control-item color-control">
+                        <label for="fontColor">لون الخط:</label>
+                        <input type="color" id="fontColor" value="#212529"> </div>
+
+                    <div class="control-item color-control">
+                        <label for="bgColor">لون الخلفية:</label>
+                        <input type="color" id="bgColor" value="#ffffff"> </div>
+                </div> <div class="control-section">
+                    <div class="control-item">
+                        <label>نمط الخط:</label>
+                        <div class="style-buttons">
+                            <button id="boldBtn" class="toggle-btn active">B</button>
+                            <button id="italicBtn" class="toggle-btn">I</button>
+                            <button id="underlineBtn" class="toggle-btn">U</button>
+                        </div>
+                    </div>
+                </div> <div class="control-section">
+                    <div class="control-item slider-control">
+                        <label for="lineHeight">تباعد الأسطر:</label>
+                        <input type="range" id="lineHeight" min="1" max="3" step="0.1" value="1.6">
+                        <span id="lineHeightValue">1.6</span>
+                    </div>
+
+                    <div class="control-item slider-control">
+                        <label for="letterSpacing">تباعد الأحرف:</label>
+                        <input type="range" id="letterSpacing" min="0" max="10" step="0.5" value="0">
+                        <span id="letterSpacingValue">0px</span>
+                    </div>
+                </div> <div class="control-section">
+                    <div class="control-item">
+                        <label>محاذاة النص:</label>
+                        <div class="alignment-buttons">
+                            <button id="alignRight" class="align-btn active" data-align="right">يمين</button>
+                            <button id="alignCenter" class="align-btn" data-align="center">وسط</button>
+                            <button id="alignLeft" class="align-btn" data-align="left">يسار</button>
+                            <button id="alignJustify" class="align-btn" data-align="justify">ضبط</button>
+                        </div>
+                    </div>
+                </div> <button id="resetBtn" class="action-btn">إعادة تعيين الكل</button>
+            </div> <div class="text-area-section">
+                <div class="text-area-container">
+                    <textarea id="textInput" placeholder="اكتب نصك هنا لتغيير خصائصه..." rows="10">أهلاً بك في مُغيّر الخطوط التفاعلي! جرب تغيير الخط، الحجم، الألوان، الأنماط، والمحاذاة وشاهد كيف يبدو نصك. هذا الموقع يساعدك في تجربة أشكال مختلفة للنص.</textarea>
+                </div>
+            </div> </main>
+    </div> <script src="script.js"></script>
+</body>
+</html>

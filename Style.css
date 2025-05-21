@@ -1,0 +1,372 @@
+/* لوحة ألوان مستوحاة من التصميم النظيف */
+:root {
+    --bg-light: #f8f9fa;             /* خلفية فاتحة جداً */
+    --card-bg: #ffffff;              /* خلفية البطاقات/الحاويات بيضاء */
+    --text-dark: #212529;            /* نص داكن للقراءة */
+    --text-muted: #6c757d;           /* نص رمادي للعناصر الثانوية */
+    --accent-blue: #007bff;          /* أزرق أساسي للبروز */
+    --accent-hover-blue: #0056b3;    /* أزرق أغمق عند التفاعل */
+    --border-color-light: #dee2e6;   /* لون حدود فاتح */
+    --input-bg-light: #e9ecef;       /* خلفية حقول الإدخال فاتحة */
+    --focus-glow: rgba(0, 123, 255, 0.25); /* توهج أزرق فاتح عند التركيز */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* ظل خفيف جداً */
+    --button-bg-inactive: #e0e0e0;  /* لون أزرار التبديل غير النشطة فاتح */
+    --button-border-inactive: #ced4da; /* حدود أزرار التبديل غير النشطة */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* align-items: flex-start لجعل المحتوى يبدأ من الأعلى */
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--bg-light); /* خلفية فاتحة */
+    direction: rtl;
+    text-align: right;
+    color: var(--text-dark); /* نص داكن */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 30px; /* حشو أقل قليلاً */
+    border-radius: 12px; /* زوايا مستديرة أقل */
+    box-shadow: 0 4px 15px var(--shadow-light); /* ظل خفيف جداً */
+    width: 98%; /* عرض أكبر قليلاً */
+    max-width: 1000px; /* زيادة أقصى عرض */
+    border: 1px solid var(--border-color-light); /* حدود فاتحة */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    text-align: center; /* محاذاة العنوان للوسط */
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--text-dark);
+    margin-bottom: 0; /* إزالة المسافة السفلية */
+    font-size: 2.5em; /* حجم أصغر قليلاً للعنوان */
+    font-weight: 700;
+    text-shadow: none; /* إزالة ظل النص */
+    letter-spacing: 0; /* إزالة تباعد الأحرف */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* تسمح للعناصر بالانتقال لسطر جديد على الشاشات الصغيرة */
+    gap: 30px; /* مسافة بين لوحة التحكم ومنطقة النص */
+}
+
+.controls-panel {
+    flex: 1; /* لتأخذ المساحة المتاحة */
+    min-width: 300px; /* عرض أدنى للوحة التحكم */
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    gap: 20px; /* مسافة بين أقسام التحكم */
+}
+
+.text-area-section {
+    flex: 2; /* لتأخذ ضعف المساحة المتاحة مقارنة بـ controls-panel */
+    min-width: 350px; /* عرض أدنى لمنطقة النص */
+}
+
+.control-section {
+    background-color: var(--card-bg); /* خلفية بيضاء لكل قسم تحكم */
+    padding: 20px;
+    border-radius: 8px; /* زوايا مستديرة أقل */
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 2px 8px var(--shadow-light); /* ظل خفيف جداً */
+    display: flex;
+    flex-wrap: wrap; /* تسمح للعناصر بالانتقال لسطر جديد داخل القسم */
+    gap: 15px; /* مسافة بين العناصر داخل القسم */
+    justify-content: space-between; /* توزيع العناصر بالتساوي */
+    align-items: center; /* محاذاة رأسية للوسط */
+}
+
+.control-item {
+    flex: 1; /* للسماح للعناصر بالنمو داخل control-section */
+    min-width: 150px; /* عرض أدنى لكل عنصر تحكم */
+    padding: 0; /* إزالة الحشو من هنا */
+    background: none; /* إزالة الخلفية من هنا */
+    border: none; /* إزالة الحدود من هنا */
+    box-shadow: none; /* إزالة الظل من هنا */
+    text-align: right;
+}
+
+label {
+    margin-bottom: 8px; /* مسافة أقل أسفل التسمية */
+    color: var(--text-dark); /* لون داكن للتسميات */
+    font-weight: 500; /* سمك خط عادي للتسميات */
+    font-size: 1em;
+}
+
+/* تنسيق حقول الإدخال والاختيار */
+input[type="range"],
+input[type="color"],
+select {
+    width: 100%;
+    padding: 10px 12px; /* حشو أقل قليلاً */
+    border: 1px solid var(--border-color-light);
+    border-radius: 6px; /* زوايا مستديرة أقل */
+    font-size: 1em;
+    background-color: var(--input-bg-light); /* خلفية فاتحة */
+    color: var(--text-dark); /* نص داكن */
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.2s ease-in-out; /* انتقال أسرع */
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* حجم أصغر لمقبض التمرير */
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    cursor: pointer;
+    box-shadow: 0 0 0 4px var(--focus-glow); /* توهج أخف */
+    margin-top: -5px; /* لجعله في المنتصف على المسار */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    cursor: pointer;
+    box-shadow: 0 0 0 4px var(--focus-glow);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px; /* مسار أرفع */
+    background: var(--input-bg-light);
+    border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: var(--input-bg-light);
+    border-radius: 4px;
+}
+
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%236c757d" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* سهم رمادي */
+    background-repeat: no-repeat;
+    background-position: left 12px center; /* سهم أقرب للحافة اليسرى */
+    background-size: 1em; /* حجم سهم أصغر قليلاً */
+    padding-right: 35px; /* مسافة أكبر لليمين بسبب وجود السهم على اليسار */
+}
+
+select option {
+    background-color: var(--card-bg); /* خلفية بيضاء */
+    color: var(--text-dark);
+}
+
+select optgroup {
+    background-color: var(--input-bg-light); /* خلفية فاتحة للمجموعة */
+    color: var(--accent-blue); /* لون مميز لعنوان المجموعة */
+    font-weight: bold;
+    padding: 8px 15px;
+}
+
+input[type="range"]:focus,
+input[type="color"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 0.25rem var(--focus-glow); /* توهج أزرق أكثر نعومة */
+}
+
+#fontSizeValue,
+#lineHeightValue,
+#letterSpacingValue {
+    display: inline-block;
+    margin-right: 10px; /* مسافة أقل */
+    color: var(--accent-blue);
+    font-weight: bold;
+    min-width: 40px; /* حجم أصغر */
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.slider-control {
+    display: flex;
+    flex-direction: row-reverse; /* لعكس ترتيب label و input range */
+    align-items: center;
+    gap: 10px; /* مسافة بين الـ label والـ slider */
+}
+.slider-control label {
+    margin-bottom: 0; /* إزالة margin-bottom للتسمية في هذا التصميم */
+    min-width: 80px; /* لجعل التسميات بنفس العرض تقريباً */
+}
+
+.text-area-container {
+    margin-top: 0; /* إزالة margin-top هنا لأنها ستكون ضمن content-wrapper */
+    position: relative;
+    border-radius: 8px; /* زوايا أقل */
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-light); /* ظل خفيف */
+    border: 1px solid var(--border-color-light); /* حدود خفيفة */
+}
+
+textarea {
+    width: 100%;
+    min-height: 400px; /* ارتفاع أكبر لمنطقة النص */
+    padding: 20px; /* حشو أقل قليلاً */
+    border: none; /* إزالة الحدود من هنا لأنها موجودة في .text-area-container */
+    border-radius: 0; /* إزالة تدوير الزوايا من هنا */
+    font-size: 1.2em; /* حجم خط افتراضي متوسط */
+    line-height: 1.7;
+    background-color: var(--card-bg); /* خلفية بيضاء */
+    color: var(--text-dark);
+    box-sizing: border-box;
+    resize: vertical;
+    outline: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* تنسيق شريط التمرير في الـ textarea */
+textarea::-webkit-scrollbar {
+    width: 10px; /* عرض أقل */
+}
+
+textarea::-webkit-scrollbar-track {
+    background: var(--bg-light); /* خلفية مسار فاتحة */
+    border-radius: 5px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: var(--text-muted); /* مقبض رمادي خفيف */
+    border-radius: 5px;
+    border: 2px solid var(--bg-light); /* حدود خفيفة بلون الخلفية */
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dark); /* مقبض أغمق عند التمرير */
+}
+
+/* تنسيق أزرار التبديل (B, I, U) والمحاذاة */
+.style-buttons,
+.alignment-buttons {
+    display: flex;
+    gap: 6px; /* مسافة أقل بين الأزرار */
+    justify-content: flex-end; /* محاذاة لليمين */
+    flex-wrap: wrap;
+}
+
+.toggle-btn,
+.align-btn {
+    background-color: var(--button-bg-inactive); /* لون افتراضي غير نشط */
+    color: var(--text-dark);
+    border: 1px solid var(--button-border-inactive);
+    padding: 8px 12px; /* حشو أقل */
+    border-radius: 6px; /* زوايا مستديرة أقل */
+    cursor: pointer;
+    font-size: 0.95em; /* حجم خط أصغر قليلاً */
+    font-weight: 600;
+    transition: all 0.2s ease-in-out; /* انتقال أسرع */
+    flex-grow: 1;
+    max-width: fit-content;
+}
+
+/* الأزرار النشطة (المفعّلة) */
+.toggle-btn.active,
+.align-btn.active {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white; /* نص أبيض على الخلفية الزرقاء */
+    box-shadow: 0 0 0 0.25rem var(--focus-glow);
+}
+
+.toggle-btn:hover,
+.align-btn:hover {
+    background-color: var(--accent-hover-blue);
+    border-color: var(--accent-hover-blue);
+    color: white;
+    transform: none; /* إزالة تأثير الـ translateY */
+    box-shadow: none; /* إزالة الظل عند التمرير */
+}
+
+/* زر إعادة التعيين */
+.action-btn {
+    margin-top: 20px; /* مسافة أقل */
+    width: 100%;
+    padding: 12px 15px; /* حشو أقل */
+    font-size: 1em;
+    background-color: #dc3545; /* لون أحمر مميز */
+    border-color: #dc3545;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+    transform: none;
+    box-shadow: none;
+}
+
+/* التجاوبية - Media Queries */
+@media (min-width: 768px) {
+    .content-wrapper {
+        flex-wrap: nowrap; /* إيقاف التفاف العناصر على الشاشات الأكبر */
+    }
+
+    .controls-panel {
+        min-width: 300px; /* تأكيد العرض الأدنى */
+    }
+
+    .text-area-section {
+        min-width: 400px; /* تأكيد العرض الأدنى */
+    }
+
+    .control-section {
+        /* لتكون الأقسام في سطر واحد على الشاشات الكبيرة */
+        /* display: grid; */
+        /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+        /* gap: 15px; */
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .controls-panel,
+    .text-area-section {
+        min-width: unset; /* إزالة العرض الأدنى للسماح بالتقلص */
+        width: 100%; /* اجعلها تأخذ العرض الكامل على الشاشات الصغيرة */
+    }
+
+    .control-item {
+        flex: 1 1 100%; /* اجعل العناصر تأخذ العرض الكامل داخل control-section */
+        min-width: unset;
+    }
+    
+    .style-buttons,
+    .alignment-buttons {
+        justify-content: center; /* محاذاة الأزرار للوسط على الشاشات الصغيرة */
+    }
+}
